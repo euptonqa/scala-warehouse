@@ -7,13 +7,17 @@ object Main {
   def main(args: Array[String]): Unit ={
     println("Current orders \n --------------- \n")
     printOrders(Order.orders)
-    println("Specify option: ")
-    println("1. Get information on product (type product ID): ")
-    println("2. Get information on worker (type worker ID): ")
-    println("3. Get an updated list of orders: ")
-    println("4. Create a new order")
-    println("5. View stock orders")
-    println("6. Exit")
+    var continue = true;
+    while(continue) {
+      println("Specify option: ")
+      println("1. Get information on product (type product ID): ")
+      println("2. Get information on worker (type worker ID): ")
+      println("3. Get an updated list of orders: ")
+      println("4. Create a new order")
+      println("5. View stock orders")
+      println("6. Exit")
+      
+    }
   }
   def printOrders(orders:Queue[OrderDescription]): Unit ={
     if(orders.isEmpty){
@@ -27,5 +31,21 @@ object Main {
   def printOrder(orderDesc:OrderDescription): Unit ={
     print(orderDesc)
   }
+
+  def printQueue(queue: Queue[_]): Unit={
+    if(queue.isEmpty){
+      return
+    }
+    val queueHead = queue.head
+    printEntity(queueHead)
+    val queueTail = queue.tail
+    printQueue((queueTail))
+
+  }
+
+  def printEntity(entity:_): Unit ={
+    print(_)
+  }
+
 
 }
