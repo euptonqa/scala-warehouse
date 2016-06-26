@@ -1,8 +1,8 @@
 /**
   * Created by emma on 24/06/2016.
   */
-object Worker extends Enumeration {
-  sealed abstract class WorkerDescriptor(val id: Int, val name:String){
+object Worker extends Enumeration with Entity {
+  sealed abstract class WorkerDescriptor(val id: Int, val name:String) extends EntityDesc{
   }
 
   case object BOB extends WorkerDescriptor(1, "bob")
@@ -13,4 +13,5 @@ object Worker extends Enumeration {
 
   def findById(id:Int) = workers.find(_.id == id)
   def findByName(name:String) = workers.find(_.name == name)
+
 }

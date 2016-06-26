@@ -1,8 +1,11 @@
 /**
   * Created by emma on 24/06/2016.
   */
-object ProductType extends Enumeration {
-  sealed abstract class ProductDescriptor(val id: Int, val name:String, var stockLevel:Int, val physicalLoc:String){
+object ProductType extends Enumeration with Entity {
+  sealed abstract class ProductDescriptor(val id: Int, val name:String, var stockLevel:Int, val physicalLoc:String) extends EntityDesc{
+   override def toString(): String ={
+     id + " | " + name + " | " + stockLevel + " | " + physicalLoc
+   }
   }
   case object REDGNOME extends ProductDescriptor(1, "red gnome", 2000, "locA")
   case object BLUEGNOME extends ProductDescriptor(2, "blue gnome", 1543, "locB")
